@@ -138,4 +138,4 @@ def MFO(x_train, y_train, x_test, y_test, Max_iteration):
         #print("Iteration = " + str(Iteration))
         #print()
         
-    return best_flames, Best_flame_score
+    return best_flames, Best_flame_score, Best_flame_pos
