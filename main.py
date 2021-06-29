@@ -91,7 +91,7 @@ print(m)
 print(n)   
 orig=np.arange(len(x_train.iloc[0]))     
 
-selected_features, fitness=mf.MFO(x_train, y_train, x_test, y_test, 100)
+selected_features, fitness, Best=mf.MFO(x_train, y_train, x_test, y_test, 100)
 #selected_features, fitness, precision, sensitivity, F1, AUC=da.DA(x_train, y_train, x_test, y_test, 1, m, orig)
 #selected_features, fitness=da2.DA2(x_train, y_train, x_test, y_test, 100, m, orig)
 #selected_features = np.random.randint(288, size=)
@@ -132,7 +132,7 @@ for k in range(20):
 
 # acc=calc_acc(y_test,y_pred)
 
-print("Reduced dimension = " + str(len(np.unique(selected_features))))
+print("Reduced dimension = " + str(len(np.unique(Best))))
 # # print()
 print("accuracy = " + str(fitness))
 # print("precision = " + str(precision))
@@ -143,19 +143,19 @@ print("accuracy = " + str(fitness))
 
 # # print(acc)
 
-x=reduced_dataset.iloc[:,:-1]
-y=reduced_dataset.iloc[:,-1]
-svclassifier = SVC(kernel='poly',coef0=2.0)
+#x=reduced_dataset.iloc[:,:-1]
+#y=reduced_dataset.iloc[:,-1]
+#svclassifier = SVC(kernel='poly',coef0=2.0)
 #svclassifier = KNeighborsClassifier(n_neighbors=5)
 #svclassifier = RandomForestClassifier()
-score_acc = cross_val_score(svclassifier,x, y, cv=5)
+#score_acc = cross_val_score(svclassifier,x, y, cv=5)
 # score_prec= cross_val_score(svclassifier,x, y, cv=5, scoring='precision')
 # score_rec= cross_val_score(svclassifier,x, y, cv=5, scoring='recall')
 # score_f1= cross_val_score(svclassifier,x, y, cv=5, scoring='f1')
 # score_auc= cross_val_score(svclassifier,x, y, cv=5, scoring='roc_auc')
 
 
-print('cross val accuracy = ' + str(score_acc.mean()))
+#print('cross val accuracy = ' + str(score_acc.mean()))
 # print("cross val precision = " + str(score_prec.mean()))
 # print("cross val sensitivity = " + str(score_rec.mean()))
 # print("cross val AUC = " + str(score_auc.mean()))
